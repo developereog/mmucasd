@@ -17,25 +17,60 @@
             <div class="menu">
                 <ul>
                     <li><a href="index.html">HOME</a></li>
-                    <li><a href="index.html/about.html">ABOUT</a></li>
-                    <li><a href="index.html/service.html">SERVICE</a></li>
-                    <li><a href="index.html/jumuiyas.html">JUMUIYAS</a></li>
-                    <li><a href="index.html/contact.html">CONTACT</a></li>
+                    <li><a href="index.html#about">ABOUT</a></li>
+                    <li><a href="index.html#service">SERVICE</a></li>
+                    <li><a href="index.html#jumuiyas">JUMUIYAS</a></li>
+                    <li><a href="index.html#contact">CONTACT</a></li>
                 </ul>
             </div>
+        </div> 
 
-        </div>
-        
-        <div class="content">
-            <section id="home">
-                <h1>MMUCA Activities & <br><span>Programs</span> <br>Website</h1>
-                <p class="par">St Don Bosco Maasai Mara University Catholic Association, MMUCA is a <br> Catholic Organization. Chaplain 
-                    is Fr. Dr. Ronoh, Current Chair: Erick Ngugi <br> We highly welcome you to our lively community, where faith is our key priority
-                    <br> Welcome and feel free to join this large community</p>
-                <button class="cn"><a href="#">JOIN US</a></button>
-            </section>
+        <div class="content" id="content">
+            <!-- Content will be dynamically loaded here -->
         </div>
     </div>
-    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to load content based on URL parameters
+            function loadContent() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const page = urlParams.get('page');
+
+                if (page === 'about') {
+                    document.getElementById('content').innerHTML = `
+                        <h1>About Us</h1>
+                        <p>This is the About page content.</p>
+                    `;
+                } else if (page === 'service') {
+                    document.getElementById('content').innerHTML = `
+                        <h1>Service</h1>
+                        <p>This is the Service page content.</p>
+                    `;
+                } else if (page === 'jumuiyas') {
+                    document.getElementById('content').innerHTML = `
+                        <h1>Jumuiyas</h1>
+                        <p>This is the Jumuiyas page content.</p>
+                    `;
+                } else if (page === 'contact') {
+                    document.getElementById('content').innerHTML = `
+                        <h1>Contact Us</h1>
+                        <p>This is the Contact page content.</p>
+                    `;
+                } else {
+                    document.getElementById('content').innerHTML = `
+                        <h1>Welcome to MMUCA</h1>
+                        <p>This is the Home page content.</p>
+                    `;
+                }
+            }
+
+            // Load content on initial page load
+            loadContent();
+
+            // Load content when hash changes (for back/forward navigation)
+            window.addEventListener('hashchange', loadContent);
+        });
+    </script>
 </body>
 </html>
